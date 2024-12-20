@@ -4,11 +4,8 @@ require('module-alias/register'); // MODULE ALIAS SETUP
 
 // IMPORTS
 const express = require('express');
-const session = require('express-session');
 const cors = require('cors');
 const cookie = require('cookie-parser');
-
-const { SESSION_MAX_AGE } = require('@/lib/constants');
 
 // INTERNAL MODULES
 const db = require('@/models');
@@ -36,18 +33,6 @@ app.use(cors({
   origin: process.env.ALLOWEDORIGIN,
   methods: "GET, POST, PUT, DELETE", 
   credentials: true
-}));
-
-// SESSION CONFIGURATION
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: { 
-      httpOnly: true,
-      secure: app.get('env') === 'production',
-      maxAge: SESSION_MAX_AGE * 1000 // 30 DAYS
-  } 
 }));
 
 // AUTHENTICATION CHECK MIDDLEWARE
