@@ -14,7 +14,7 @@ const errorHandler = require('@/middleware/errorHandler');
 
 // INITIALIZE APP AND SERVER
 const { app, server } = require('@/lib/socket');
-const port = process.env.SERVER_PORT || 3002;
+const port = process.env.SERVER_PORT || 5002;
 
 // TRUST PROXY IF IN PRODUCTION
 if (app.get('env') === 'production') app.set('trust proxy', 1);
