@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import tailwindcssAnimate from 'tailwindcss-animate';
+
 export default {
   darkMode: 'class',
   content: [
@@ -37,12 +39,10 @@ export default {
         chart3: 'hsl(var(--chart-3))',
         chart4: 'hsl(var(--chart-4))',
         chart5: 'hsl(var(--chart-5))',
-
-        facebook: 'hsl(214, 89%, 52%)'
       },
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
+    tailwindcssAnimate,
   ],
 }
