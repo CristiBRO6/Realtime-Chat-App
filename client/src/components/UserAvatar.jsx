@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 import { getUserInitials } from '@/utils/userUtils';
 
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/Avatar";
 
 const UserAvatar = ({ name, avatar, className = "", ...props }) => (
   <Avatar className={twMerge("size-8", className)} {...props}>
