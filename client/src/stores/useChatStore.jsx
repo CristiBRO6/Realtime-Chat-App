@@ -75,7 +75,7 @@ export const useChatStore = create(
         const { selectedUser, messages } = get();
 
         try {
-          const res = await messageService.sendMessage(selectedUser, messageData);
+          const res = await messageService.sendMessage(selectedUser.id, messageData);
           
           set({ messages: [...messages, res.data] });
         } catch (err) {
@@ -105,7 +105,7 @@ export const useChatStore = create(
         const socket = useAuthStore.getState().socket;
 
         socket.on("newMessage", (newMessage) => {
-          if(newMessage.senderId !== selectedUser) return;
+          if(newMessage.senderId !== selectedUser.id) return;
           set((state) => ({ messages: [...state.messages, newMessage] }));
         });
       },
