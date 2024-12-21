@@ -1,4 +1,5 @@
 const { ACCESS_TOKEN_MAX_AGE, REFRESH_TOKEN_MAX_AGE } = require('@/lib/constants');
+const { app } = require('@/lib/socket');
 const { createAccessToken, createRefreshToken } = require('@/utils/jwtUtils');
 
 const authenticateUser = (res, userId) => {
