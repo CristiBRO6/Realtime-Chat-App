@@ -13,8 +13,8 @@ const setCookie = (res, name, value, maxAge) => {
     res.cookie(name, value, {
         maxAge: maxAge * 1000, 
         httpOnly: true,
-        sameSite: 'strict',
-        secure: true,
+        sameSite: 'lax',
+        secure: app.get('env') === 'production',
     });
 };
 
