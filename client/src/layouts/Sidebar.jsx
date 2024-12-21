@@ -20,10 +20,11 @@ import Logout from '@/components/Logout';
 import UserItem from '@/components/UserItem';
 import UserAvatar from '@/components/UserAvatar';
 import Search from '@/components/Search';
+import SidebarSkeleton from '@/components/Skeletons/SidebarSkeleton';
 
 const Sidebar = () => {
   const { user } = useUser();
-  const { getUsers, users, setSelectedUser, selectedUser } = useChatStore();
+  const { getUsers, users, selectedUser, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
   const { open, setOpen } = useSidebarStore();
 
@@ -59,7 +60,7 @@ const Sidebar = () => {
     }
   };
 
-  if (isLoading) return null;
+  if(isLoading) return <SidebarSkeleton />
 
   return (
     <div className={twMerge("flex-1 md:max-w-64 md:flex flex-col bg-background border-r", open ? "flex" : "hidden")}>
@@ -72,7 +73,7 @@ const Sidebar = () => {
 
       <div className="flex-1 flex flex-col gap-4 py-4 px-2">
         <Search filter={filter} onlineUsers={onlineUsers} users={users} setUsers={setFilteredUsers} />
-
+        
         <div className="flex flex-col gap-2">
           <span className="text-sm font-semibold px-2 text-muted-foreground">Channels</span>
           <Button
@@ -120,7 +121,7 @@ const Sidebar = () => {
           </ToggleGroup>
 
           {filteredUsers.length > 0 ? (
-            <ScrollArea className="h-full flex flex-col">
+            <ScrollArea className="flex-1 flex flex-col">
               <div className="flex flex-col gap-2">
                 {filteredUsers.map((user) => (
                   <UserItem
@@ -128,7 +129,7 @@ const Sidebar = () => {
                     user={user}
                     onlineUsers={onlineUsers}
                     onClick={() => {
-                      setSelectedUser(user.id);
+                      setSelectedUser(user);
                       setOpen(false);
                     }}
                   />

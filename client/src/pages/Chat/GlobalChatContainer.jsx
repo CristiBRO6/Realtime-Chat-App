@@ -36,14 +36,10 @@ const GlobalChatContainer = () => {
               {isDifferentDay(message, globalMessages[index - 1]) && (
                 <span className="block text-center font-medium text-xs text-muted-foreground mb-2">{formatShortDate(message.createdAt)}</span>
               )}
-              <div 
-                key={message.id} 
-                className={twMerge("flex items-start gap-2", message.senderId === user.id ? "justify-end" : "justify-start")}
-                ref={messageRef}
-              >
+              <div key={message.id} className={twMerge("flex items-end gap-2", message.senderId === user.id ? "justify-end" : "justify-start")} ref={messageRef}>
                 {message.senderId !== user.id && <UserAvatar name={message.user.name} avatar={message.user.avatar} />}
 
-                <div className={twMerge("flex flex-col gap-1 rounded-lg p-3 max-w-[70%]", message.senderId === user.id ? "bg-primary text-primary-foreground" : "bg-muted")}>
+                <div className={twMerge("flex flex-col gap-1 rounded-lg p-3 max-w-[75%]", message.senderId === user.id ? "bg-primary text-primary-foreground" : "bg-muted")}>
                   <div className="text-sm font-semibold">{message.senderId === user.id ? user.name : message.user.name}</div>
                   <span className="text-sm">{message.text}</span>
                   <span className="text-xs text-muted-foreground">{formatTime(message.createdAt)}</span>

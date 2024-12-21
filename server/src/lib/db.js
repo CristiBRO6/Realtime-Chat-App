@@ -7,21 +7,14 @@ const sequelize = new Sequelize(
     {
         host: process.env.DB_HOST,
         dialect: process.env.DIALECT,
-        port: process.env.DB_PORT,
         logging: false,
-        dialectOptions: {
-            ssl: {
-            require: true,
-            rejectUnauthorized: false,
-            },
-        },
     }
 );
 
 async function testConnection() {
     try {
         await sequelize.authenticate();
-        console.log('Connected to database (PostgreSQL)');
+        console.log('Connected to database');
     } catch (err) {
         console.error('Error connecting to database:', err.message);
     }
