@@ -9,7 +9,7 @@ import { formatShortDate, formatTime } from '@/utils/formatDate';
 import { isDifferentDay } from '@/utils/messageUtils';
 
 import { ScrollArea } from '@/components/ui/ScrollArea';
-import UserAvatar from '@/components/userAvatar';
+import UserAvatar from '@/components/UserAvatar';
 
 const GlobalChatContainer = () => {
   const { user } = useUser();

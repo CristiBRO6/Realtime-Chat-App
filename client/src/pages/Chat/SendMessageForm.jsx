@@ -3,11 +3,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Send } from "lucide-react";
 
+import { useChatStore } from '@/stores/useChatStore';
+import { useAuthStore } from '@/stores/useAuthStore';
+
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 
-import { useChatStore } from '@/stores/useChatStore';
-import { useAuthStore } from '@/stores/useAuthStore';
 import sendMessageSchema from '@/schemas/sendMessageSchema';
 
 const SendMessageForm = () => {
