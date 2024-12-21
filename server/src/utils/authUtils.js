@@ -1,5 +1,4 @@
 const { ACCESS_TOKEN_MAX_AGE, REFRESH_TOKEN_MAX_AGE } = require('@/lib/constants');
-const { app } = require('@/lib/socket');
 const { createAccessToken, createRefreshToken } = require('@/utils/jwtUtils');
 
 const authenticateUser = (res, userId) => {
@@ -15,7 +14,7 @@ const setCookie = (res, name, value, maxAge) => {
         maxAge: maxAge * 1000, 
         httpOnly: true,
         sameSite: 'None',
-        secure: app.get('env') === 'production',
+        secure: true, // IN PRODUCTION IS (app.get('env') === 'production')
     });
 };
 

@@ -8,9 +8,6 @@ const { requireAuth } = require('@/middleware/authMiddleware');
 // USERS
 router.get('/users', requireAuth(), messageController.getUsers);
 
-// USER
-router.get('/users:id', requireAuth(), messageController.getUser);
-
 // GET GLOBAL MESSAGES
 router.get('/', requireAuth(), messageController.getGlobalMessages);
 

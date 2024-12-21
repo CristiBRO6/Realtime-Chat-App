@@ -26,29 +26,17 @@ const Chat = () => {
       <Sidebar />
 
       <div className={twMerge("flex-1 overflow-hidden md:flex flex-col", open ? "hidden" : "flex")}>
-        {selectedUser  ? (
-          <ChatProvider>
-            {/* HEADER CHAT */}
-            <HeaderChat />
+        {/* HEADER CHAT */}
+        <HeaderChat />
 
-            {/* CONTAINER CHAT */}
-            <ChatContainer/>
+        {/* CONTAINER CHAT */}
+        {selectedUser  
+          ? <ChatProvider><ChatContainer/></ChatProvider> 
+          : <GlobalChatProvider><GlobalChatContainer /></GlobalChatProvider>
+        }
 
-            {/* FOOTER CHAT */}
-            <SendMessageForm />
-          </ChatProvider> 
-        ) : (
-          <GlobalChatProvider>
-            {/* HEADER CHAT */}
-            <HeaderChat />
-
-            {/* CONTAINER CHAT */}
-            <GlobalChatContainer />
-
-            {/* FOOTER CHAT */}
-            <SendMessageForm />
-          </GlobalChatProvider>
-        )}
+        {/* FOOTER CHAT */}
+        <SendMessageForm />
       </div>
     </>
   )

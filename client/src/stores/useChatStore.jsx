@@ -12,7 +12,6 @@ export const useChatStore = create(
       globalMessages: [],
       messages: [],
       users: [],
-      userChat: {},
       typing: false,
       
       selectedUser: null,
@@ -49,19 +48,6 @@ export const useChatStore = create(
           set({ messages: res.data });
         } catch (err) {
           set({ messages: [] });
-
-          toast.error(err.response.data.message);
-          throw new Error(err.response.data.message);
-        }
-      },
-
-      getUserChat: async (userId) => {
-        try {
-          const res = await messageService.getUser(userId);
-
-          set({ userChat: res.data });
-        } catch (err) {
-          set({ userChat: [] });
 
           toast.error(err.response.data.message);
           throw new Error(err.response.data.message);

@@ -28,25 +28,21 @@ const ChatContainer = () => {
     if (messageRef.current && messages) messageRef.current.scrollIntoView();
   }, [messages]);
 
-  useEffect(() => {
-    console.log(typing)
-  }, [typing])
-
   return (
     <>
       <ScrollArea className="flex-1 px-4 py-2">
         {messages.length !== 0 ? (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
             {messages.map((message, index) => (
               <div key={message.id}>
                 {isDifferentDay(message, messages[index - 1]) && (
                   <span className="block text-center font-medium text-xs text-muted-foreground mb-2">{formatShortDate(message.createdAt)}</span>
                 )}
 
-                <div className={twMerge("flex items-start gap-2", message.senderId === user.id ? "justify-end" : "justify-start")} ref={messageRef}>
+                <div className={twMerge("flex items-end gap-2", message.senderId === user.id ? "justify-end" : "justify-start")} ref={messageRef}>
                   {message.senderId !== user.id && <UserAvatar name={message.user.name} avatar={message.user.avatar} />}
 
-                  <div className={twMerge("flex flex-col gap-1 rounded-lg p-3 max-w-[70%]", message.senderId === user.id ? "bg-primary text-primary-foreground text-end" : "bg-muted text-start")}>
+                  <div className={twMerge("flex flex-col gap-1 rounded-lg p-3 max-w-[75%]", message.senderId === user.id ? "bg-primary text-primary-foreground text-end" : "bg-muted text-start")}>
                     <span className="text-sm">{message.text}</span>
                     <span className="text-xs text-muted-foreground">{formatTime(message.createdAt)}</span>
                   </div>

@@ -1,15 +1,14 @@
-import { Hash, Users, EllipsisVertical  } from "lucide-react";
+import { Hash, Users  } from "lucide-react";
 
 import { useChatStore } from "@/stores/useChatStore";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { useSidebarStore } from "@/stores/useSidebarStore";
 
-import Button from "@/components/ui/Button";
 import UserAvatar from "@/components/UserAvatar";
 import GoBack from "@/components/GoBack";
 
 const HeaderChat = () => {
-  const { userChat, selectedUser } = useChatStore();
+  const { selectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
   const { setOpen } = useSidebarStore();
 
@@ -19,11 +18,8 @@ const HeaderChat = () => {
 
       {selectedUser ? (
         <>
-          <UserAvatar name={userChat.name} avatar={userChat.avatar} />
-          <span className="flex-1 text-lg font-semibold">{userChat.name}</span>
-          <Button variant="ghost" size="icon">
-            <EllipsisVertical className="size-4" />
-          </Button>
+          <UserAvatar name={selectedUser.name} avatar={selectedUser.avatar} />
+          <span className="flex-1 text-lg font-semibold">{selectedUser.name}</span>
         </>
       ) : (
         <>

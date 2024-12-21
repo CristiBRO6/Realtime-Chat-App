@@ -12,18 +12,6 @@ exports.getUsers = async (req, res) => {
     }
 };
 
-exports.getUser = async (req, res) => {
-    try {
-        const { id } = req.params;
-
-        const result = await messageService.getUser(id);
-        return res.status(200).json(result);
-    } catch (err) {
-        console.error(err.message);
-        return res.status(500).json({ status: false, message: err.message });
-    }
-};
-
 exports.getGlobalMessages = async (req, res) => {
     try {
         const result = await messageService.getGlobalMessages();

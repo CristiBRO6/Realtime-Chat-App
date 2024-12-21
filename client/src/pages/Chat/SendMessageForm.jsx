@@ -29,7 +29,7 @@ const SendMessageForm = () => {
 
   const handleTyping = () => {
     if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
-    else socket.emit('typing', selectedUser);
+    else socket.emit('typing', selectedUser.id);
 
     typingTimeoutRef.current = setTimeout(() => {
       handleStopTyping();
@@ -37,7 +37,7 @@ const SendMessageForm = () => {
   };
 
   const handleStopTyping = () => {
-    socket.emit('stopTyping', selectedUser);
+    socket.emit('stopTyping', selectedUser.id);
     typingTimeoutRef.current = null;
   };
 

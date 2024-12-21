@@ -3,24 +3,26 @@ import { useEffect, useState } from 'react';
 
 import { useChatStore } from '@/stores/useChatStore';
 
+import MessageSkeleton from '@/components/Skeletons/MessageSkeleton';
+
 const GlobalChatProvider = ({ children }) => {
-  const { getGlobalMessages, selectedUser } = useChatStore();
+  const { getGlobalMessages } = useChatStore();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadUser = async () => {
       setIsLoading(true);
       try {
-        await getGlobalMessages(selectedUser);
+        await getGlobalMessages();
       } finally {
         setIsLoading(false);
       }
     };
 
     loadUser();
-  }, [getGlobalMessages, selectedUser]);
+  }, [getGlobalMessages]);
 
-  if (isLoading) return null;
+  if (isLoading) return <MessageSkeleton />;
 
   return <>{children}</>;
 };

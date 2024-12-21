@@ -12,14 +12,14 @@ const UserItem = ({ user, onlineUsers, ...props }) => {
   return (
     <Button 
       variant="ghost" 
-      className={twMerge("w-full justify-start", selectedUser === user.id ? "active" : null)} 
+      className={twMerge("w-full justify-start", selectedUser?.id === user.id ? "active" : null)} 
       {...props}
     >
       <div className="relative">
         <UserAvatar name={user.name} avatar={user.avatar} className="size-6" />
         <div className={twMerge(
           "absolute bottom-0 right-0 block h-2 w-2 rounded-full ring-2 transition-colors",
-          selectedUser === user.id ? "ring-accent" : "ring-background",
+          selectedUser?.id === user.id ? "ring-accent" : "ring-background",
           onlineUsers.includes(user.id) ? "bg-green-500" : "bg-muted-foreground"
         )} />
       </div>
