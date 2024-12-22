@@ -1,6 +1,8 @@
 import { twMerge } from 'tailwind-merge';
 import { EllipsisVertical, Hash, UserCheck, Users, X } from 'lucide-react';
 
+import { useSidebarStore } from '@/stores/useSidebarStore';
+
 import useUser from '@/hooks/useUser';
 
 import { ScrollArea } from '@/components/ui/ScrollArea';
@@ -9,9 +11,9 @@ import Button from '@/components/ui/Button';
 import SearchInput from '@/components/ui/SearchInput';
 import UserAvatar from '@/components/UserAvatar';
 
-
 const SidebarSkeleton = () => {
   const { user } = useUser();
+  const { open } = useSidebarStore();
   const skeletonSidebar = Array(6).fill(null);
 
   return (
