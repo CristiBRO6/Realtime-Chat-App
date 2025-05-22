@@ -13,7 +13,7 @@ import UserAvatar from '@/components/UserAvatar';
 
 const ChatContainer = () => {
   const { user } = useUser();
-  const { selectedUser, messages, typing, subscribeToMessages, unsubscribeToMessages, subscribeToTyping } = useChatStore();
+  const { messages, typing, subscribeToMessages, unsubscribeToMessages, subscribeToTyping } = useChatStore();
 
   const messageRef = useRef(null);
 
@@ -59,7 +59,7 @@ const ChatContainer = () => {
 
       {typing && (
         <span className="px-4 pb-2 text-sm text-muted-foreground shadow-sm">
-          {selectedUser.name} is typing...
+          {messages.find(m => m.senderId === typing)?.user?.name || "Someone"} is typing...
         </span>
       )}
     </>
