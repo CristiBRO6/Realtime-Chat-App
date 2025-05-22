@@ -59,7 +59,7 @@ const ChatContainer = () => {
 
       {typing && (
         <span className="px-4 pb-2 text-sm text-muted-foreground shadow-sm">
-          {message.user.name} is typing...
+          {messages[0].user.name} is typing...
         </span>
       )}
     </>
