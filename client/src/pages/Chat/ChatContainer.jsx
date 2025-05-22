@@ -59,7 +59,7 @@ const ChatContainer = () => {
 
       {typing && (
         <span className="px-4 pb-2 text-sm text-muted-foreground shadow-sm">
-          {messages.find(m => m.senderId === typing)?.user?.name || "Someone"} is typing...
+          {messages.find(m => m.senderId === user.id)?.user?.name || "Someone"} is typing...
         </span>
       )}
     </>
